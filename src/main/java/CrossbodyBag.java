@@ -1,32 +1,34 @@
-/*
- * This file is currently empty, but with a variety of TODOs to implement.
- * You may want to refer to HandBag.java to see how to structure your code.
- *
- * You may find the readings in chapter 3. Relationships between Classes
- * helpful while working through this exercise.
- */
+// This file defines a child class named CrossbodyBag.
 
-/*
- * TODO: Create a public class named CrossbodyBag which is a subclass of Bag
- *       In addition to the attributes in Bag, the CrossbodyBag should have an
- *       attribute named "numberOfStraps".
- *
- *       The constructor for CrossbodyBag should take the following parameters
- *       in order:
- *           1. a String for the color
- *           2. an int for the capacity
- *           3. an int for the number of straps
- *
- *       CrossbodyBag should also have a getter method called getNumberOfStraps
- *       and it should implement the enhance method.
- *
- *       The enhance method should increase the capacity of the CrossbodyBag by
- *       2 (as opposed to the 1 that HandBag increases by).
- *
- *       The toString method should be overridden to return a string in the
- *       in the same form as Bag's toString but with the original "Bag" part
- *       of the string replaced by:
- *           Crossbody Bag with {numberOfStraps} straps
- *
- *       See the tests in test/CrossBodyBagTest.java for examples.
- */
+public class CrossbodyBag extends Bag {
+    // need var for number of straps; Str color + int capacity from super
+    private int numberOfStraps;
+
+    /** constructor for CrossbodyBag
+     * @param color colour for the bag
+     * @param capacity capacity for the bag
+     * @param numberOfStraps number of strap(s) for the bag
+     */
+    public CrossbodyBag(String color, int capacity, int numberOfStraps) {
+        super(color, capacity);  // calling bag's constructor (parent)
+        this.numberOfStraps = numberOfStraps;  // # of strap(s) attribute
+    }
+
+    // getter function
+    public int getNumberOfStraps() {
+        return this.numberOfStraps;
+    }
+
+    // enhance method overriding -increasing capacity by 2 instead
+    @Override
+    public void enhance() {
+        super.increaseCapacity(2); // capacity increased by 2
+    }
+
+    // toString overriding -replacing Bag with Crossbody Bag w/ {# of Straps}"
+    @Override
+    public String toString() {
+        String rep_L = "Crossbody Bag with " + this.numberOfStraps + " straps";
+        return super.toString().replace("Bag", rep_L);
+    }
+}
